@@ -1,0 +1,60 @@
+<ion-modal [isOpen]="isOpen()" id="vlkb-output" [backdropDismiss]="false">
+  <ng-template>
+    <ion-header [translucent]="true" class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>{{ 'vlkbOutputViewer.title' | translate }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button slot="end" (click)="closeModalHandler()">
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-accordion-group
+        [multiple]="true"
+        [value]="['select-sources', 'filaments', 'all-sources']"
+      >
+        <ion-accordion value="select-sources">
+          <ion-item slot="header" class="accordion-header">
+            <ion-label>{{ 'vlkbOutputViewer.menu.selectSources' | translate }}</ion-label>
+            <ion-icon
+              class="ion-accordion-toggle-icon"
+              name="chevron-down"
+              slot="end">
+            </ion-icon>
+          </ion-item>
+          <div slot="content" class="accordion-content">
+            <app-select-sources></app-select-sources>
+          </div>
+        </ion-accordion>
+        <ion-accordion value="filaments">
+          <ion-item slot="header" class="accordion-header">
+            <ion-label>{{ 'vlkbOutputViewer.menu.filaments' | translate }}</ion-label>
+            <ion-icon
+              class="ion-accordion-toggle-icon"
+              name="chevron-down"
+              slot="end">
+            </ion-icon>
+          </ion-item>
+          <div slot="content" class="accordion-content">
+            <app-filaments></app-filaments>
+          </div>
+        </ion-accordion>
+        <ion-accordion value="all-sources">
+          <ion-item slot="header" class="accordion-header">
+            <ion-label>{{ 'vlkbOutputViewer.menu.allSources' | translate }}</ion-label>
+            <ion-icon
+              class="ion-accordion-toggle-icon"
+              name="chevron-down"
+              slot="end">
+            </ion-icon>
+          </ion-item>
+          <div slot="content" class="accordion-content">
+            <app-all-sources></app-all-sources>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-content>
+  </ng-template>
+</ion-modal>

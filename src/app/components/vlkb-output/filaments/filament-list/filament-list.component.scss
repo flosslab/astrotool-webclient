@@ -1,0 +1,30 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.color-box {
+  height: 48px;
+  width: 48px;
+}
+
+.even-row {
+  background-color: #383838;
+}
+
+.odd-row {
+  background-color: #3D3D3D;
+}
+
+.active-color {
+  --background: #267738;
+}
+
+.inactive-color {
+  --background: #25262F;
+}

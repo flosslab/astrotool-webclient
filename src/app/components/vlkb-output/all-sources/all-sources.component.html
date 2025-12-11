@@ -1,0 +1,70 @@
+<div class="section-wrapper">
+<!--  <div class="section">-->
+<!--    <div class="source-section-title">All Sources</div>-->
+<!--    @for (s of selected | async; track s) {-->
+<!--      {{ s.id }}-->
+<!--    }-->
+<!--  </div>-->
+<!--  <div class="section">-->
+<!--    <div class="source-section-title">All Sources</div>-->
+<!--  </div>-->
+  <div class="section">
+<!--    <div class="source-section-title">All Sources</div>-->
+    <div class="source-wrap" [formGroup]="sourceForm">
+      <div>
+        @for (el of getGroupFirst(); track el) {
+          <button
+            [class]="{'selected': sourceForm.get('first')?.value === el}"
+            (click)="setSource('first', el)"> {{ el | titlecase }}
+          </button>
+        }
+      </div>
+      <div>
+        @let second = getGroupSecond();
+        @for (el of second; track el) {
+          <button
+            [class]="{'selected': sourceForm.get('second')?.value === el}"
+            (click)="setSource('second', el)"> {{ el | titlecase }}
+          </button>
+        }
+        @if (!sourceForm.get('first')?.value) {
+          <div>E' necessario selezionare un valore nella colonna precedente.</div>
+        } @else if (!second.length) {
+          <div>Nessun elemento presente.</div>
+        }
+      </div>
+      <div>
+        @let third = getGroupThird();
+        @for (el of third; track el) {
+          <button
+            [class]="{'selected': sourceForm.get('third')?.value === el}"
+            (click)="setSource('third', el)"> {{ el | uppercase }}
+          </button>
+        }
+        @if (!sourceForm.get('second')?.value) {
+          <div>E' necessario selezionare un valore nella colonna precedente.</div>
+        } @else if (!third.length) {
+          <div>Nessun elemento presente.</div>
+        }
+      </div>
+      <div>
+        @let fourth = getGroupFourth();
+        @for (el of fourth; track el) {
+          <button
+            [class]="{
+                'selected': sourceForm.get('fourth')?.value === el?.id,
+                'full-overlap': el?.extra.overlap === 3
+              }"
+            (click)="setSource('fourth', el)"> {{ el?.title }} [{{ el?.extra.obs_id }} ]
+          </button>
+        }
+        @if (!sourceForm.get('third')?.value) {
+          <div>E' necessario selezionare un valore nella colonna precedente.</div>
+        } @else if (!fourth.length) {
+          <div>Nessun elemento presente.</div>
+        }
+      </div>
+
+    </div>
+  </div>
+</div>

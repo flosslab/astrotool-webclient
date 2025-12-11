@@ -1,0 +1,60 @@
+<ion-modal [isOpen]="isOpen()" id="import-local-file" [backdropDismiss]="false">
+  <ng-template>
+    <ion-header [translucent]="true" class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>{{ 'importLocalFile.title' | translate }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button slot="end" (click)="closeModalHandler()">
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    @let uf = (uploadFileStatus | async);
+    @if (uf) {
+      <app-alert-info
+        [isOpen]="uf.isOpen"
+        [status]="uf.chunkIndex"
+        [max]="uf.totalChunks"></app-alert-info>
+    }
+
+    <div  class="ion-padding file-content">
+      <input
+        id="file-upload"
+        type="file"
+        accept=".fits"
+        (change)="endBrowseLocalFoldersHandler($event)"
+      >
+
+      <div
+        class="draggable-area"
+        [ngClass]="{'active': hasFile || isDragDropOvered, 'inactive': !hasFile && !isDragDropOvered}"
+        appDragDrop
+        (filesEmitter)="dragAndDropFilesHandler($event)"
+        (overedEmitter)="setDragDropOvered($event)"
+      >
+        <p class="text-center">
+          {{
+            hasFile
+              ? getFileName
+              : 'importLocalFile.body.dragAndDrop.placeHolder' | translate
+          }}
+        </p>
+      </div>
+
+      <ion-row class="ion-padding-vertical buttons-container">
+          <ion-button
+            expand="block"
+            class="button-blue"
+            (click)="startBrowseLocalFoldersHandler()"
+          >
+            <p slot="start">{{ 'importLocalFile.body.browseLocalFolders.buttonLabel' | translate }}</p>
+            <ion-icon name="folder-outline" slot="end"></ion-icon>
+          </ion-button>
+      </ion-row>
+    </div>
+  </ng-template>
+</ion-modal>
+
+

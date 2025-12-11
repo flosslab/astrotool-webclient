@@ -1,0 +1,122 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ "coneSearch.title" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid [formGroup]="coneSearchForm">
+    <ion-row>
+      <ion-col>
+        <div class="center-content">
+          <span class="ion-padding">{{ "coneSearch.menu.parameters" | translate }}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "coneSearch.menu.coneURL" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="coneURL"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "coneSearch.menu.ra" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="ra"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "coneSearch.menu.dec" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="dec"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "coneSearch.menu.radius" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="radius"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "coneSearch.menu.verbosity.title" | translate }}</span>
+          </div>
+          <ion-select
+            class="button-blue"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            formControlName="verbosity"
+            interface="popover"
+            labelPlacement="stacked"
+            [selectedText]="'coneSearch.menu.verbosity.' + getVerbosityValue | translate"
+          >
+            @for (value of verbosityValues; track value) {
+              <ion-select-option [value]="value">
+                {{ "coneSearch.menu.verbosity." + value | translate}}
+              </ion-select-option>
+            }
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="searchHandler()">
+          <span>{{ "coneSearch.menu.search" | translate }}</span>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="center-content">
+          <span class="ion-padding">{{ "coneSearch.body.table.title" | translate }}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="empty-table"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="center-content">
+    <ion-button (click)="sodaCutoutHandler()">
+      <span>{{ "coneSearch.menu.sodaCutout" | translate }}</span>
+    </ion-button>
+  </div>
+</ion-content>

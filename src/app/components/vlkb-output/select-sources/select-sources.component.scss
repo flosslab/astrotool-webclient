@@ -1,0 +1,55 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.green-text {
+  color: #16B331;
+}
+
+.dropdown {
+  --background: #25619C;
+  min-width: 175px;
+}
+
+ion-range {
+  --bar-background: #25262F;
+  --bar-background-active: #25262F;
+  --bar-height: 32px;
+  --knob-background: #A6A6A5;
+  --knob-size: 48px;
+}
+
+ion-range::part(bar) {
+  border-radius: 22px;
+  border: 4px solid #25262F;
+}
+
+ion-range::part(bar-active) {
+  display: none;
+}
+
+ion-range::part(knob) {
+  border: 4px solid #25262F;
+}
+
+.even-row {
+  background-color: #383838;
+}
+
+.odd-row {
+  background-color: #3D3D3D;
+}
+
+.active-color {
+  --background: #267738;
+}
+
+.inactive-color {
+  --background: #25262F;
+}

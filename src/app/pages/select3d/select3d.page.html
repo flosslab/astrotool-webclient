@@ -1,0 +1,151 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">{{ "select3D.title" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid [formGroup]="select3dForm" class="ion-padding-horizontal">
+
+    <!-- VLKB url -->
+
+    <ion-row class="ion-padding-top">
+      <div class="same-row">
+        <div class="input-container">
+          <span class="input-label">{{ "select3D.menu.vlkbUrl" | translate }}</span>
+          <ion-input
+            class="custom"
+            formControlName="vlkb-url"
+          ></ion-input>
+        </div>
+        <ion-button
+          (click)="connectToVLKBurlHandler()"
+        >
+          {{ "select3D.menu.connect" | translate }}
+        </ion-button>
+      </div>
+    </ion-row>
+
+    <!-- Coordinates -->
+
+    <ion-row class="ion-padding-top">
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <div class="full-width text-center">
+            <span>{{ "select3D.menu.coordinates" | translate }}</span>
+          </div>
+        </ion-row>
+        <ion-row>
+          <div class="full-width text-left">
+            <span>{{ "select3D.menu.longitude" | translate }}</span>
+          </div>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="input-container">
+              <div class="input-label-container text-left">
+                <span class="ion-padding-horizontal input-label">{{ "select3D.menu.min" | translate }}</span>
+              </div>
+              <ion-input
+                class="custom"
+                formControlName="min-longitude"
+                type="number"
+              ></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="input-container">
+              <div class="input-label-container text-left">
+                <span class="ion-padding-horizontal input-label">{{ "select3D.menu.max" | translate }}</span>
+              </div>
+              <ion-input
+                class="custom"
+                formControlName="max-longitude"
+                type="number"
+              ></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <div class="full-width text-left">
+            <span>{{ "select3D.menu.latitude" | translate }}</span>
+          </div>
+        </ion-row>
+        <ion-row class="ion-padding-bottom">
+          <ion-col>
+            <div class="input-container">
+              <div class="input-label-container text-left">
+                <span class="ion-padding-horizontal input-label">{{ "select3D.menu.min" | translate }}</span>
+              </div>
+              <ion-input
+                class="custom"
+                formControlName="min-latitude"
+                type="number"
+              ></ion-input>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="input-container">
+              <div class="input-label-container text-left">
+                <span class="ion-padding-horizontal input-label">{{ "select3D.menu.max" | translate }}</span>
+              </div>
+              <ion-input
+                class="custom"
+                formControlName="max-latitude"
+                type="number"
+              ></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+
+    <!-- Save to disk -->
+
+    <ion-row class="ion-padding-top">
+      <ion-col>
+        <ion-checkbox
+          labelPlacement="end"
+          formControlName="save-to-disk"
+        >
+          {{ "select3D.menu.saveToDisk" | translate }}
+        </ion-checkbox>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="same-row">
+          <div class="input-container">
+            <span
+              [ngClass]="{'invalid': !isSaveToDiskEnabled}"
+              class="input-label"
+            >
+              {{ "select3D.menu.outputPrefix" | translate }}
+            </span>
+            <ion-input
+              class="custom"
+              formControlName="output-prefix-name"
+            ></ion-input>
+          </div>
+          <ion-button
+            [disabled]="!isSaveToDiskEnabled"
+            (click)="openFolderHandler()"
+          >
+            <ion-icon slot="icon-only" name="folder-open-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Query button -->
+
+    <ion-row class="ion-padding-top">
+      <ion-button
+        (click)="queryHandler()"
+        class="full-width"
+      >
+        {{ "select3D.menu.query" | translate }}
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

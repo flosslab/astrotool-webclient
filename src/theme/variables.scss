@@ -1,0 +1,30 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+@font-face {
+  font-family: Lato;
+  src: url("../assets/fonts/Lato/Lato-Regular.ttf"); //change url accordingly
+}
+
+* {
+  font-family: Lato, serif;
+}
+
+:root {
+
+  --grey-one: #393939;
+  --grey-two: #2E2E2F;
+  --grey-three: #666666;
+  --grey-four: #A6A6A5;
+
+  --dark-one: #25262F;
+
+  --blue-one: #266FB8;
+
+  --ion-color-primary: var(--blue-one);
+  --ion-color-primary-contrast: white;
+
+
+  --ion-color-step-350: var(--ion-color-primary);
+}
+

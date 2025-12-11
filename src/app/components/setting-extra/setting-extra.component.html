@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'settings.menu.extra' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container [formGroup]="extraForm">
+    <ion-list>
+
+      <!-- 3D settings -->
+
+      <ion-item>
+        <div class="section-container">
+          <h5>{{ 'settings.threeD.title' | translate }}</h5>
+          <ion-list>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.threeD.maxSize' | translate }}</p>
+              <ion-input
+                [value]="threeDMaxSize"
+                fill="outline"
+                type="number"
+                formControlName="threeDMaxSize"
+              ></ion-input>
+            </div>
+          </ion-list>
+        </div>
+      </ion-item>
+
+      <!-- Glyph settings -->
+
+      <ion-item>
+        <div class="section-container">
+          <h5>{{ 'settings.glyph.title' | translate }}</h5>
+
+          <ion-list>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.glyph.max' | translate }}</p>
+              <ion-input
+                [value]="glyphMax"
+                fill="outline"
+                type="number"
+                formControlName="glyphMax"
+              ></ion-input>
+            </div>
+          </ion-list>
+        </div>
+      </ion-item>
+
+    </ion-list>
+  </ng-container>
+
+  <!-- Form buttons -->
+
+  <app-settings-buttons
+    [onSave]="saveSettings.bind(this)"
+    [onCancel]="cancelSettings.bind(this)"
+    [onReset]="resetSettings.bind(this)"
+    [saveAndCancelEnabled]="areSaveAndCancelEnabled"
+    [resetEnabled]="isResetEnabled"
+  ></app-settings-buttons>
+</ion-content>

@@ -1,0 +1,57 @@
+ion-modal#import-local-file {
+  --width: 80vh;
+  --height: 80vh;
+  --border-radius: 1.5rem;
+  --background: var(--grey-three);
+}
+
+ion-button {
+  --background: #266FB8;
+}
+
+ion-toolbar {
+  --background: var(--grey-three);
+  // border-bottom: solid #FFFFFF 1px;
+}
+
+ion-content {
+  --background: var(--grey-three);
+}
+
+#file-upload {
+  display: none;
+}
+
+.file-content {
+  display: grid;
+  grid-template-rows: 4fr auto 0;
+  height: 100%;
+}
+
+.draggable-area {
+  border-radius: 1.5rem;
+}
+
+.active {
+  background-color: var(--grey-two);
+}
+
+.inactive {
+  background-color: var(--dark-one);
+}
+
+.text-center {
+  text-align: center;
+  position: relative;
+  top: 50%;
+}
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  ion-button {
+    width: 100%;
+  }
+}

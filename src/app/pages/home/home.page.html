@@ -1,0 +1,383 @@
+<!--<ion-header [translucent]="true">-->
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button id="func1" size="small">{{"home.menu.file.title" | translate}}</ion-button>
+    <ion-button id="func2" size="small">{{"home.menu.vo.title" | translate}}</ion-button>
+    <ion-button id="func3" size="small">{{"home.menu.help.title" | translate}}</ion-button>
+    <ion-popover trigger="func1" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="openResourceExplorer()">
+            <span>{{"home.menu.file.resourceExplorer" | translate}}</span>
+          </ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" disabled>
+            <span>{{"home.menu.file.loadSession" | translate}}</span>
+          </ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="openSettings()">
+            <span>{{"home.menu.file.settings" | translate}}</span>
+          </ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" disabled>
+            <span>{{"home.menu.file.exit" | translate}}</span>
+          </ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" disabled>
+            <span>{{"home.menu.file.loadSED" | translate}}</span>
+          </ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="openSecond()">
+            <span>{{"home.menu.file.open" | translate}}</span>
+          </ion-button>
+          <!--
+          <ion-button fill="clear" color="dark" expand="full" size="small">
+            <span>start</span>
+          </ion-button>
+          -->
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+    <ion-popover trigger="func2" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="openConeSearch()">
+            <span>{{"home.menu.vo.coneSearch" | translate}}</span>
+          </ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="openHips2Fits()">
+            <span>{{ "home.menu.vo.hips2fits" | translate }}</span>
+          </ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+    <ion-popover trigger="func3" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="openAboutUs()">
+            <span>{{"home.menu.help.aboutUs" | translate}}</span>
+          </ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="consoleMenu.toggle()">
+            <span>{{"home.menu.help.log" | translate}}</span>
+          </ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+  <app-console #consoleMenu />
+  <ion-split-pane when="xl" contentId="main">
+
+
+    <ion-menu side="end" [type]="'reveal'" contentId="main">
+      <ion-content class="ion-padding">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <!--
+              <input #fileUploader type="file" accept=".fits" style="display: none" (change)="loadData($event)" />
+              <ion-button class="button-blue"  (click)="fileUploader.click()">
+                <div>
+                  <span>{{"home.body.loadData" | translate}}</span>
+                  <ion-icon name="search-circle-outline"></ion-icon>
+                </div>
+              </ion-button>
+              -->
+              <ion-button class="button-blue" (click)="openExploreResource()">
+                <div>
+                  <span>{{"home.menu.file.resourceExplorer" | translate}}</span>
+                  <ion-icon name="search-circle-outline"></ion-icon>
+                </div>
+              </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="button-blue" (click)="openSelect3D()">
+                <div>
+                  <span>{{"home.body.select3d" | translate}}</span>
+                  <ion-icon name="search-circle-outline"></ion-icon>
+                </div>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ng-container [formGroup]="surveyFormGroup">
+          <ion-grid formGroupName="survey" (submit)="submitQuery()">
+            <ion-text>{{"home.body.surveySelector.title" | translate}}</ion-text>
+            <ion-row>
+              <ion-col>
+                <div class="survey-col" formGroupName="hi-gal">
+                  <span>{{"home.body.surveySelector.hiGal" | translate}}</span>
+                  <app-chip-toggle formControlName="500um">500 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="350um">350 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="250um">250 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="160um">160 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="70um">70 µm</app-chip-toggle>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="survey-col" formGroupName="glimpse">
+                  <span>{{"home.body.surveySelector.glimpseMipsigal" | translate}}</span>
+                  <app-chip-toggle formControlName="24um">24 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="8_0um">8.0 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="5_8um">5.8 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="4_5um">4.5 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="3_6um">3.6 µm</app-chip-toggle>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="survey-col" formGroupName="wise">
+                  <span>{{"home.body.surveySelector.wise" | translate}}</span>
+                  <app-chip-toggle formControlName="22um">22 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="22um1">22 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="22um2">22 µm</app-chip-toggle>
+                  <app-chip-toggle formControlName="22um3">22 µm</app-chip-toggle>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div class="survey-col" formGroupName="atlasgal">
+                  <span>{{"home.body.surveySelector.atlasgal" | translate}}</span>
+                  <app-chip-toggle formControlName="24um">24 µm</app-chip-toggle>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="survey-col" formGroupName="bolocamGPS">
+                  <span>{{"home.body.surveySelector.bolocamGPS" | translate}}</span>
+                  <app-chip-toggle formControlName="22um">22 µm</app-chip-toggle>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="survey-col" formGroupName="cornish">
+                  <span>{{"home.body.surveySelector.cornish" | translate}}</span>
+                  <app-chip-toggle formControlName="22um">22 µm</app-chip-toggle>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-grid formGroupName="selectionType">
+            <ion-row>
+              <ion-text>{{"home.body.selection.title" | translate}}</ion-text>
+              <!--[value]="funcSelectorValue"-->
+              <ion-segment
+                mode="ios"
+                (ionChange)="handleSelection($event)"
+                formControlName="selection-type"
+              >
+                <ion-segment-button value="none">
+                  <ion-label class="white-text">{{"home.body.selection.none" | translate}}</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="point">
+                  <ion-label class="white-text">{{"home.body.selection.point" | translate}}</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="rect">
+                  <ion-label class="white-text">{{"home.body.selection.rectangular" | translate}}</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-row>
+          </ion-grid>
+          <ion-grid formGroupName="coordinates">
+            <ion-row>
+              <ion-text>{{"home.body.coordinates.title" | translate}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-label>
+                  <span>{{"home.body.coordinates.glon" | translate}}</span>
+                  <ion-input class="custom" formControlName="lon" type="number" step="0.000001"></ion-input>
+                </ion-label>
+                <ion-label>
+                  <span>{{"home.body.coordinates.glat" | translate}}</span>
+                  <ion-input class="custom" formControlName="lat" type="number" step="0.000001"></ion-input>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-label>
+                  <span>{{"home.body.coordinates.radius" | translate}}</span>
+                  <ion-input class="custom" formControlName="rad"  type="number" step="0.000001"></ion-input>
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <span>{{"home.body.coordinates.dl" | translate}}</span>
+                  <ion-input class="custom" formControlName="dlon"  type="number" step="0.000001">
+                    <!--                  <ion-text slot="end" style="width: 20px; margin: 0">°</ion-text>-->
+                  </ion-input>
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <span>{{"home.body.coordinates.db" | translate}}</span>
+                  <ion-input class="custom" formControlName="dlat"  type="number" step="0.000001"></ion-input>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ng-container>
+
+
+
+        <!--        <div class="second-start-line">-->
+
+
+        <!--        </div>-->
+        <!--        <div class="survey-selector">-->
+        <!--          <ion-text>Survey selector</ion-text>-->
+        <!--          <div class="survey-col-wrapper">-->
+        <!--            <div class="survey-col">-->
+        <!--              <span>HI-GAL</span>-->
+        <!--              <ion-chip>500 µm</ion-chip>-->
+        <!--              <ion-chip>350 µm</ion-chip>-->
+        <!--              <ion-chip>250 µm</ion-chip>-->
+        <!--              <ion-chip>160 µm</ion-chip>-->
+        <!--              <ion-chip>70 µm</ion-chip>-->
+        <!--            </div>-->
+        <!--            <div class="survey-col">-->
+        <!--              <span>GLIMPSE/MIPSGAL</span>-->
+        <!--              <ion-chip>24 µm</ion-chip>-->
+        <!--              <ion-chip>8.0 µm</ion-chip>-->
+        <!--              <ion-chip>5.8 µm</ion-chip>-->
+        <!--              <ion-chip>4.5 µm</ion-chip>-->
+        <!--              <ion-chip>3.6 µm</ion-chip>-->
+        <!--            </div>-->
+        <!--            <div class="survey-col">-->
+        <!--              <span>WISE</span>-->
+        <!--              <ion-chip>22 µm</ion-chip>-->
+        <!--              <ion-chip>22 µm</ion-chip>-->
+        <!--              <ion-chip>22 µm</ion-chip>-->
+        <!--              <ion-chip>22 µm</ion-chip>-->
+        <!--            </div>-->
+        <!--            <div class="survey-col">-->
+        <!--              <span>ATLASGAL</span>-->
+        <!--              <ion-chip>24 µm</ion-chip>-->
+        <!--            </div>-->
+        <!--            <div class="survey-col">-->
+        <!--              <span>BOLOCAM GPS</span>-->
+        <!--              <ion-chip>22 µm</ion-chip>-->
+        <!--            </div>-->
+        <!--            <div class="survey-col">-->
+        <!--              <span>CORNISH</span>-->
+        <!--              <ion-chip>22 µm</ion-chip>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--        </div>-->
+        <!--        <div class="selection">-->
+        <!--          <ion-text>Selection</ion-text>-->
+        <!--          <ion-segment mode="ios" value="none">-->
+        <!--            <ion-segment-button value="none">-->
+        <!--              <ion-label>None</ion-label>-->
+        <!--            </ion-segment-button>-->
+        <!--            <ion-segment-button value="point">-->
+        <!--              <ion-label>Point</ion-label>-->
+        <!--            </ion-segment-button>-->
+        <!--            <ion-segment-button value="rect">-->
+        <!--              <ion-label>Rectangular</ion-label>-->
+        <!--            </ion-segment-button>-->
+        <!--          </ion-segment>-->
+        <!--        </div>-->
+        <div class="coordinates"></div>
+        <div class="second-end-line"></div>
+
+      </ion-content>
+      <ion-footer class="ion-padding">
+        <ion-row>
+          <ion-col>
+            <ion-button class="button-blue" (click)="submitQuery()" [disabled]="surveyFormGroup.invalid">
+              <div>
+                <span>{{"home.body.query" | translate}}</span>
+                <ion-icon name="search-circle-outline"></ion-icon>
+              </div>
+            </ion-button>
+            <ion-button class="button-grey">
+              <div>
+                <span>{{"home.body.request" | translate}}</span>
+                <ion-icon name="git-pull-request-outline"></ion-icon>
+              </div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-footer>
+    </ion-menu>
+
+    <div class="ion-page" id="main">
+
+      <form [formGroup]="searchForm" class="search-bar" (ngSubmit)="search()">
+        <div>
+          <ion-input
+            formControlName="keywords"
+            class="custom placeholder-white-text"
+            color="secondary"
+            placeholder='{{"home.body.searchForm.placeholder" | translate}}'
+          ></ion-input>
+          <ion-button slot="icon-only" (click)="search()">
+            <ion-icon name="search-sharp"></ion-icon>
+          </ion-button>
+        </div>
+<!--        <div></div>-->
+        <div>
+          <ion-select
+            class="button-blue white-text"
+            attr.aria-label='{{"home.body.searchForm.coordinates" | translate}}'
+            interface="popover"
+            value="gal"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            labelPlacement="stacked"
+            (ionChange)="setFrame($event)"
+          >
+            @for (coor of coordinatesList; track coor) {
+              <ion-select-option [value]="coor">{{coor | uppercase}}</ion-select-option>
+            }
+          </ion-select>
+          <ion-select
+            class="button-blue white-text placeholder-no-transparency"
+            attr.aria-label='{{"home.body.searchForm.survey.title" | translate}}'
+            interface="popover"
+            value=""
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            labelPlacement="stacked"
+            (ionChange)="setSurvey($event)"
+            [multiple]="true"
+            placeholder='{{"home.body.searchForm.survey.placeholder" | translate}}'
+          >
+            @for (survey of surveyList; track survey) {
+              <ion-select-option [value]="survey[0]">{{survey[1]}}</ion-select-option>
+            }
+          </ion-select>
+          <ion-select
+            class="button-blue white-text"
+            attr.aria-label='{{"home.body.searchForm.projection" | translate}}'
+            interface="popover"
+            value="STG"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            labelPlacement="stacked"
+            (ionChange)="setProjection($event)"
+          >
+            @for (projection of projectionList; track projection) {
+              <ion-select-option [value]="projection[0]">{{projection[0]}}</ion-select-option>
+            }
+          </ion-select>
+        </div>
+
+      </form>
+      <div id="aladin-lite-div"></div>
+      <div class="mouse-pointer">
+        {{ mouseCurrentPosition }}
+      </div>
+    </div>
+  </ion-split-pane>
+
+</ion-content>
+
+<app-alert-info
+  [isOpen]="alertInfoData.isOpen"
+  [status]="alertInfoData.status"
+  [max]="alertInfoData.max"></app-alert-info>
+
+<!--<app-resources-explorer-->
+<!--  [isOpen]="resourcesExplorerOpen"-->
+<!--  [onClose]="closeResourceExplorer.bind(this)"-->
+<!--&gt;</app-resources-explorer>-->

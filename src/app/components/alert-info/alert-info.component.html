@@ -1,0 +1,10 @@
+<ion-modal [isOpen]="isOpen()" id="alert-info" [backdropDismiss]="false">
+  <ng-template>
+    <div class="loading-bar-wrapper">
+      <span>Loading...</span>
+      <div class="loading-bar">
+        <div class="inner-bar" [ngStyle]="{width: percent()}"></div>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

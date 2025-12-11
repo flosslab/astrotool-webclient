@@ -1,0 +1,127 @@
+<div class="first-left">
+  <div>
+    <div>
+      <ion-range #thresholdRange aria-label="Range with ionChange" labelPlacement="fixed" label="Threshold"
+                 [min]="1 "
+                 [max]="100"
+                 [step]="1"
+                 [ticks]="true" [pin]="false" [snaps]="true"
+                 [value]="1"
+                 (ionChange)="updateContour($event)"></ion-range>
+      <span>{{ +thresholdRange.value | number: '1.4-4' }}</span>
+    </div>
+    <div>
+      <ion-range #zRange aria-label="Range with ionChange" labelPlacement="fixed" label="Z"
+                 [min]="processData.resource.cutterBounds[0]"
+                 [max]="processData.resource.cutterBounds[1]"
+                 [step]="1"
+                 [ticks]="true" [pin]="false" [snaps]="true"
+                 [value]="processData.rendering['3d'].cutter"
+                 (ionChange)="updateCutter($event)"></ion-range>
+      <span>{{ +zRange.value  | number: '1.4-5' }}</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="first-right">
+  <!--  <ion-button type="icon" (click)="enableCrossHair()">-->
+  <!--    <ion-icon name="scan-outline"></ion-icon>-->
+  <!--  </ion-button>-->
+
+  <div class="contour2d-wrapper" [formGroup]="contour2DForm">
+    <ion-toggle formControlName="enabled" (ionChange)="handleLut()">Contours</ion-toggle>
+    <ion-input class="custom" formControlName="level" type="number" label="Level" [min]="0" [max]="100"
+               (ionChange)="handleLut()"></ion-input>
+    <ion-input class="custom"  formControlName="min" [min]="sliceStats.min" [max]="contour2DForm.get('max')?.value" type="number" label="Min"
+               (ionChange)="handleLut()"></ion-input>
+    <ion-input class="custom"  formControlName="max" [min]="contour2DForm.get('min')?.value" [max]="sliceStats.max" type="number" label="Max"
+               (ionChange)="handleLut()"></ion-input>
+
+  </div>
+  <div class="statistics">
+    <span>Statistics</span>
+    <div class="data-cells">
+      <span></span>
+      <span>min</span>
+      <span>max</span>
+      <span>mean</span>
+      <span>rms</span>
+      <span>slice</span>
+      <span>{{ sliceStats.min | number :'1.4-4' }}</span>
+      <span>{{ sliceStats.max | number :'1.4-4' }}</span>
+      <span>{{ sliceStats.mean | number :'1.4-4' }}</span>
+      <span>{{ sliceStats.rms | number :'1.4-4' }}</span>
+      <span>datacube</span>
+      <span>{{ processData.stats.min | number :'1.4-4' }}</span>
+      <span>{{ processData.stats.max | number :'1.4-4' }}</span>
+      <span>{{ processData.stats.mean | number :'1.4-4' }}</span>
+      <span>{{ processData.stats.rms | number :'1.4-4' }}</span>
+    </div>
+  </div>
+
+
+</div>
+
+<div #vtkDivRenderer class="vtk-div-render left"></div>
+<div #vtkDivRendererImage class="vtk-div-render right" (mouseleave)="handleCrossHair('leave')"
+     (mouseenter)="handleCrossHair('enter')">
+  <div #crossHairX class="crosshair-horizontal" id="horizontal"></div>
+  <div #crossHAirY class="crosshair-vertical" id="vertical"></div>
+</div>
+
+<div class="bottom-left">
+  <ion-button id="open-view-headers">View Headers</ion-button>
+</div>
+<div class="bottom-right">
+  <span>{{ rightCoordinates }}</span>
+</div>
+
+<ion-modal trigger="open-view-headers" cssClass="custom-model">
+  <ng-template>
+    <ion-header>
+    </ion-header>
+    <div class="headers-grid-modal" >
+      <h1>Headers</h1>
+        Search per key
+        <input type="text" class="custom-input" placeholder="Enter here, ex. axis..." #searchInput/>
+
+      <div class="headers-grid">
+        @for (item of getHeaders(searchInput.value); track item[0]) {
+          @if (item[0]) {
+            <div class="headers-grid-element">
+              <h5> {{ item[0] }}</h5>
+              <span> {{ item[1]?.value }}</span>
+              <p> {{ item[1]?.descr }}</p>
+            </div>
+          }
+        }
+
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+
+
+<!--<ng-template #headerModalTemplate>-->
+<!--  <ion-content class="ion-padding headers-grid-modal">-->
+<!--    <h1>Headers</h1>-->
+<!--    <ion-input type="text" #searchInput>Search per key</ion-input>-->
+<!--    <div class="headers-grid">-->
+<!--      @for (item of getHeaders(searchInput.value); track item) {-->
+<!--        @if (item[0]) {-->
+<!--          <div class="headers-grid-element">-->
+<!--            <h5> {{ item[0] }}</h5>-->
+<!--            <span> {{ item[1]?.value }}</span>-->
+<!--            <p> {{ item[1]?.descr }}</p>-->
+<!--          </div>-->
+<!--        }-->
+<!--      }-->
+
+<!--    </div>-->
+
+
+<!--  </ion-content>-->
+<!--</ng-template>-->
+
+

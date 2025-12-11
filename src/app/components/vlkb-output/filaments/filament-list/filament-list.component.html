@@ -1,0 +1,38 @@
+<ion-grid class="ion-no-padding">
+  @for(row of filaments; track row; let index= $index, even = $even, odd = $odd) {
+    <ion-row
+      [ngClass]="{
+        'even-row': swapEvenAndOdd ? odd : even,
+        'odd-row': swapEvenAndOdd ? even : odd
+      }"
+    >
+      <ion-col size="3.5">
+        <ion-row class="container">
+          <span class="ion-padding-horizontal">{{index + offsetLength + 1}}</span>
+          <div
+            class="color-box"
+            [style]="getFilamentBoxColor(row.color)"
+          ></div>
+          <ion-button
+            (click)="apertureHandler(index + offsetLength)">
+            <ion-icon slot="icon-only" name="aperture-outline"></ion-icon>
+          </ion-button>
+          <ion-button
+            [ngClass]="{
+              'active-color': isVisible(index + offsetLength),
+              'inactive-color': !isVisible(index + offsetLength)
+            }"
+            (click)="toggleVisible(index + offsetLength)"
+          >
+            <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
+          </ion-button>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6.5">
+        <ion-row class="container">
+          <span class="ion-padding-horizontal">{{row.label}}</span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  }
+</ion-grid>

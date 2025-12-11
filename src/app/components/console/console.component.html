@@ -1,0 +1,9 @@
+<ng-container class="console" [class.expanded]="isOpen">
+  <div>
+    <h3>Logger</h3>
+    <button (click)="toggle()">close</button>
+  </div>
+  @for (log of logs | async; track log) {
+    <span>{{ log }}</span>
+  }
+</ng-container>

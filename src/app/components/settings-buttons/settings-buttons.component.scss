@@ -1,0 +1,17 @@
+.outer-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: #A6A6A5;
+}
+
+.left-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 0;
+}

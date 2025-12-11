@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> {{ 'settings.menu.general' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container [formGroup]="generalForm">
+    <ion-list>
+      <ion-select #languageSelect [label]="'langs.title' | translate" formControlName="lang" interface="popover">
+        @for (lang of languageList; track lang) {
+          <ion-select-option [value]="lang">{{'langs.' + lang | translate}}</ion-select-option>
+        }
+      </ion-select>
+    </ion-list>
+
+  </ng-container>
+
+  <!-- Form buttons -->
+
+  <app-settings-buttons
+    [onSave]="setSettings.bind(this)"
+    [onCancel]="cancelSettings.bind(this)"
+    [onReset]="resetSettings.bind(this)"
+    [saveAndCancelEnabled]="areSaveAndCancelEnabled"
+    [resetEnabled]="isResetEnabled"
+  ></app-settings-buttons>
+
+</ion-content>

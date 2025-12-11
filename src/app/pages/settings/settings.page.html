@@ -1,0 +1,24 @@
+<ion-split-pane when="xs" contentId="main">
+  <ion-menu contentId="main">
+    <ion-header>
+      <ion-toolbar color="light">
+        <ion-title>{{ 'settings.menu.title' | translate }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list lines="none">
+        @for (item of getSettingsKeys; track item) {
+          <ion-button expand="full"
+                      [color]="handleHighlight(item)"
+                      (click)="openSettings(item)">
+            <ion-label>{{ 'settings.menu.' + item | translate }}</ion-label>
+          </ion-button>
+        }
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main">
+    <ion-nav #settingNav></ion-nav>
+  </div>
+</ion-split-pane>

@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'settings.menu.extra' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container [formGroup]="remoteForm">
+    <ion-list>
+
+      <!-- Tile -->
+
+      <ion-item>
+        <div class="section-container">
+          <h5>{{ 'settings.tile.title' | translate }}</h5>
+          <input
+            id="explore-tile-path"
+            class="hidden"
+            type="file"
+            webkitDirectory
+            (change)="endBrowseLocalFoldersHandler($event)"
+          >
+          <ion-list>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.tile.path' | translate }}</p>
+              <ion-input
+                [value]="tilePath"
+                fill="outline"
+                formControlName="tilePath"
+              ></ion-input>
+              <ion-button size="md" (click)="startBrowseLocalFoldersHandler()">
+                <ion-icon slot="icon-only" name="folder-outline"></ion-icon>
+              </ion-button>
+            </div>
+            <div class="input-container">
+              <ion-checkbox
+                class="ion-padding-vertical input-label"
+                [value]="tileIsOnline"
+                (ionChange)="updateTileIsOnline()"
+                labelPlacement="end"
+                formControlName="tileIsOnline"
+              >
+                {{ 'settings.tile.isOnline' | translate }}
+              </ion-checkbox>
+
+              @if(tileIsOnline) {
+                <ion-input
+                  [value]="tileUrl"
+                  fill="outline"
+                  formControlName="tileUrl"
+                ></ion-input>
+              }
+            </div>
+          </ion-list>
+        </div>
+      </ion-item>
+
+
+      <!-- VLKB -->
+
+      <ion-item>
+        <div class="section-container">
+          <h5>{{ 'settings.vlkb.title' | translate }}</h5>
+          <ion-list>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.vlkb.vlkbUrl' | translate }}</p>
+              <ion-input
+                [value]="vlkbMainUrl"
+                fill="outline"
+                formControlName="vlkbMainUrl"
+              ></ion-input>
+            </div>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.vlkb.tapUrl' | translate }}</p>
+              <ion-input
+                [value]="vlkbTapUrl"
+                fill="outline"
+                formControlName="vlkbTapUrl"
+              ></ion-input>
+            </div>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.authentication.status' | translate }}</p>
+
+              @if(!vlkbAuthenticated) {
+                <p>{{'settings.authentication.notAuthenticated' | translate }}</p>
+                <ion-button (click)="vlkbSignIn()" class="ion-no-padding ion-padding-horizontal">
+                  <p>{{ 'settings.authentication.signIn' | translate }}</p>
+                </ion-button>
+                <ion-button (click)="vlkbSignUp()" class="ion-no-padding ion-padding-horizontal">
+                  <p>{{ 'settings.authentication.signUp' | translate }}</p>
+                </ion-button>
+              } @else {
+                <p>{{'settings.authentication.authenticated' | translate }}</p>
+                <ion-button (click)="vlkbSignOut()" class="ion-no-padding ion-padding-horizontal">
+                  <p>{{ 'settings.authentication.signOut' | translate }}</p>
+                </ion-button>
+              }
+            </div>
+            <div class="input-container">
+              <ion-checkbox
+                class="ion-padding-vertical"
+                [value]="vlkbSearchWhenLoadingLocalData"
+                (ionChange)="updateVlkbSearchWhenLoadingLocalData()"
+                labelPlacement="end"
+                formControlName="vlkbSearchWhenLoadingLocalData"
+              >
+                {{ 'settings.vlkb.searchWhenLoadingLocalData' | translate }}
+              </ion-checkbox>
+            </div>
+          </ion-list>
+        </div>
+      </ion-item>
+
+      <!-- CAESAR -->
+
+      <ion-item>
+        <div class="section-container">
+          <h5>{{ 'settings.caesar.title' | translate }}</h5>
+          <ion-list>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.caesar.apiEndpoint' | translate }}</p>
+              <ion-input
+                [value]="caesarApiEndpoint"
+                fill="outline"
+                formControlName="caesarApiEndpoint"
+              ></ion-input>
+            </div>
+            <div class="input-container">
+              <p class="input-label">{{ 'settings.authentication.status' | translate }}</p>
+
+              @if(!caesarAuthenticated) {
+                <p>{{'settings.authentication.notAuthenticated' | translate }}</p>
+                <ion-button (click)="caesarSignIn()" class="ion-no-padding ion-padding-horizontal">
+                  <p>{{ 'settings.authentication.signIn' | translate }}</p>
+                </ion-button>
+                <ion-button (click)="caesarSignUp()" class="ion-no-padding ion-padding-horizontal">
+                  <p>{{ 'settings.authentication.signUp' | translate }}</p>
+                </ion-button>
+              }
+              @else {
+                <p>{{'settings.authentication.authenticated' | translate }}</p>
+                <ion-button (click)="caesarSignOut()" class="ion-no-padding ion-padding-horizontal">
+                  <p>{{ 'settings.authentication.signOut' | translate }}</p>
+                </ion-button>
+              }
+            </div>
+          </ion-list>
+        </div>
+      </ion-item>
+
+    </ion-list>
+  </ng-container>
+
+  <!-- Form buttons -->
+
+  <app-settings-buttons
+    [onSave]="saveSettings.bind(this)"
+    [onCancel]="cancelSettings.bind(this)"
+    [onReset]="resetSettings.bind(this)"
+    [saveAndCancelEnabled]="areSaveAndCancelEnabled"
+    [resetEnabled]="isResetEnabled"
+  ></app-settings-buttons>
+</ion-content>

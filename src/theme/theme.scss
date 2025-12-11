@@ -1,0 +1,126 @@
+:root {
+  --toolbar-min-height: 40px
+}
+
+ion-toolbar {
+  --background: var(--grey-one);
+  --color: white;
+  --min-height: var(--toolbar-min-height);
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+}
+
+ion-popover ion-content ion-button span {
+  margin-right: auto;
+}
+
+ion-button {
+  text-transform: none;
+}
+
+ion-input.custom {
+  --highlight-color-valid: var(--ion-color-primary);
+  --background: var(--dark-one);
+  --color: #fff;
+  --placeholder-opacity: 0.8;
+  min-height: 24px;
+  //max-width: 245px;
+  text-align: center;
+  --placeholder-color:#ffffff47;
+
+}
+
+ion-segment {
+  --background: var(--grey-one);
+}
+
+@mixin button-core {
+  --border-radius: 10px;
+  --color: white;
+  height: 32px;
+  min-height: 32px;
+  font-size: 14px; //WA for rem difference
+  display: flex;
+  justify-content: center;
+
+  & > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.button-grey {
+  @include button-core;
+  --background: var(--grey-three);
+  --color: white;
+}
+
+.button-blue {
+  @include button-core;
+  --background: var(--ion-color-primary);
+}
+
+.range-input-wrapper {
+  background: #000000;
+  padding: 0 1rem;
+  border-radius: 50px;
+  height: 24px;
+  display: flex;
+  width: 185px;
+
+  ::ng-deep {
+    .range-knob {
+      border-radius: var(--knob-border-radius);
+      top: calc(50% - var(--knob-size) / 2);
+      position: absolute;
+      width: calc(var(--knob-size) - 4px);
+      height: calc(var(--knob-size) - 4px);
+      background: var(--knob-background);
+      -webkit-box-shadow: var(--knob-box-shadow);
+      box-shadow: var(--knob-box-shadow);
+      z-index: 2;
+      pointer-events: none;
+      border: solid #25262F 2px;
+    }
+
+  }
+
+}
+
+.range-input {
+  min-height: inherit;
+  width: inherit;
+  --background: black;
+  --bar-height: 1.5rem;
+  --knob-background: #A6A6A5;
+  --knob-size: 1.5rem;
+  --knob-box-shadow: 0px 0px 0px 2px #25262F;
+  --bar-background: black;
+  --bar-background-active: black;
+  --bar-border-radius: 10px;
+}
+
+.directions {
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  grid-template-rows: repeat(3, 20px);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  font-size: 1.4rem;
+  line-height: 1rem;
+}
+
+ion-modal {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.h-100 {
+  height: 100%! important;
+}
+
+.resource-modal {
+  --width: 80%;
+  --height: 90%;
+}

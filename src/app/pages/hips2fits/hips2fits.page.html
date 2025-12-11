@@ -1,0 +1,253 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ "hips2fits.title" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid [formGroup]="hips2fitsForm">
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.hipsSurvey" | translate }}</span>
+          </div>
+
+          <ion-select
+            class="button-blue"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            formControlName="hips"
+            interface="popover"
+            labelPlacement="stacked"
+          >
+            @for (value of hipsSurveyValues; track value) {
+              <ion-select-option [value]="value">{{value}}</ion-select-option>
+            }
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.widthPx" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="width"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.heightPx" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="height"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.ra" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="ra"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.dec" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="dec"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.projection" | translate }}</span>
+          </div>
+
+          <ion-select
+            class="button-blue"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            formControlName="projection"
+            interface="popover"
+            labelPlacement="stacked"
+          >
+            @for (value of projectionValues; track value) {
+              <ion-select-option [value]="value">{{ value }}</ion-select-option>
+            }
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.fovDegrees" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="fov"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.coordsSystem.title" | translate }}</span>
+          </div>
+          <ion-select
+            class="button-blue"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            formControlName="coordsys"
+            interface="popover"
+            labelPlacement="stacked"
+            [selectedText]="'hips2fits.menu.coordsSystem.' + getCoordsSysValue | translate"
+          >
+            @for (value of coordsSysValues; track value) {
+              <ion-select-option [value]="value">
+                {{ "hips2fits.menu.coordsSystem." + value | translate }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.rotationAngleDegrees" | translate }}</span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="rotation_angle"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span class="ion-padding-horizontal input-label">{{ "hips2fits.menu.format.title" | translate }}</span>
+          </div>
+          <ion-select
+            class="button-blue"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            formControlName="format"
+            interface="popover"
+            labelPlacement="stacked"
+            [selectedText]="'hips2fits.menu.format.' + getFormatValue | translate"
+          >
+            @for (value of formatValues; track value) {
+              <ion-select-option [value]="value">
+                {{ "hips2fits.menu.format." + value | translate}}
+              </ion-select-option>
+            }
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span
+              [ngClass]="{'invalid': isFormatFits}"
+              class="ion-padding-horizontal input-label"
+            >
+              {{ "hips2fits.menu.minCutPercentile" | translate }}
+            </span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="min_cut"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span
+              [ngClass]="{'invalid': isFormatFits}"
+              class="ion-padding-horizontal input-label"
+            >
+              {{ "hips2fits.menu.maxCutPercentile" | translate }}
+            </span>
+          </div>
+          <ion-input
+            class="custom"
+            formControlName="max_cut"
+            type="number"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="input-container">
+          <div class="input-label-container">
+            <span
+              [ngClass]="{'invalid': isFormatFits}"
+              class="ion-padding-horizontal input-label"
+            >
+             {{ "hips2fits.menu.stretch.title" | translate }}
+            </span>
+          </div>
+          <ion-select
+            class="button-blue"
+            expandedIcon="chevron-up-sharp"
+            toggleIcon="chevron-down-sharp"
+            formControlName="stretch"
+            interface="popover"
+            labelPlacement="stacked"
+            [selectedText]="'hips2fits.menu.stretch.' + getStretchValue | translate"
+          >
+            @for (value of stretchValues; track value) {
+              <ion-select-option [value]="value">
+                {{ "hips2fits.menu.stretch." + value | translate}}
+              </ion-select-option>
+            }
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="center-content">
+    <ion-button (click)="downloadHandler()">
+      <span>{{ "hips2fits.menu.download" | translate }}</span>
+    </ion-button>
+  </div>
+</ion-content>

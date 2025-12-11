@@ -1,0 +1,22 @@
+<ion-grid class="ion-no-padding">
+  <ion-row>
+    <ion-col>
+      <app-filament-list
+        [filaments]="getFirstHalfFilamentRows"
+        [apertureHandler]="apertureHandler.bind(this)"
+        [isVisible]="isVisible.bind(this)"
+        [toggleVisible]="toggleVisible.bind(this)"
+      ></app-filament-list>
+    </ion-col>
+    <ion-col>
+      <app-filament-list
+        [filaments]="getSecondHalfFilamentRows"
+        [offsetLength]="getFirstHalfFilamentsRowsLength"
+        [swapEvenAndOdd]="true"
+        [apertureHandler]="apertureHandler.bind(this)"
+        [isVisible]="isVisible.bind(this)"
+        [toggleVisible]="toggleVisible.bind(this)"
+      ></app-filament-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

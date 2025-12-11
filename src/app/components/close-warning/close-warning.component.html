@@ -1,0 +1,8 @@
+<div class="modal-backdrop" *ngIf="warningService.showModal">
+  <div class="modal">
+    <h2>Attenzione</h2>
+    <p>Sei sicuro di voler uscire? I dati non salvati andranno persi.</p>
+    <button (click)="confirmExit()">Esci</button>
+    <button (click)="cancelExit()">Annulla</button>
+  </div>
+</div>

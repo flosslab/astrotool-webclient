@@ -1,0 +1,79 @@
+<ion-grid class="ion-no-padding">
+  @let selectedList = selectSourceRows | async;
+  <!--@for (item of selectedList; track item) {
+    <p>{{ item.title}} [{{item.extra.obs_id}}]</p>
+  }-->
+
+  @for(row of selectedList; track row; let index = $index, even = $even, odd = $odd) {
+    <ion-row [ngClass]="{'even-row': even, 'odd-row': odd}">
+      <ion-col size="5.5">
+        <ion-row class="container">
+          <ion-button
+              class="ion-margin"
+              [ngClass]="{
+                'active-color': isLayerToggled(index),
+                'inactive-color': !isLayerToggled(index)
+              }"
+              (click)="toggleLayer(index)"
+            >
+              <ion-icon slot="icon-only" name="layers-outline"></ion-icon>
+            </ion-button>
+            <span [ngClass]="{'green-text': row.extra.overlap === 3}">
+              {{ row.title}} [{{row.extra.obs_id}}]
+            </span>
+          <button (click)="downloadFits(row)">Download</button>
+        </ion-row>
+      </ion-col>
+      <ion-col size="2">
+        <ion-row class="container">
+          <span [ngClass]="{'green-text': row.extra.overlap === 3}">
+            {{row.extra.overlap}}
+          </span>
+        </ion-row>
+      </ion-col>
+      <ion-col size="2.5">
+        <ion-row class="container">
+          <ion-accordion-group>
+            <ion-accordion>
+              <ion-item slot="header" class="dropdown">
+                <ion-label>{{getDropdownValue(index)}}</ion-label>
+              </ion-item>
+            </ion-accordion>
+          </ion-accordion-group>
+          <ion-button
+            [ngClass]="{
+              'active-color': isLineRadioActive('line', index),
+              'inactive-color': !isLineRadioActive('line', index)
+            }"
+            (click)="setLineRadioValue('line', index)"
+          >
+            <ion-icon slot="icon-only" name="layers-outline"></ion-icon>
+          </ion-button>
+          <ion-button
+            [ngClass]="{
+              'active-color': isLineRadioActive('curve', index),
+              'inactive-color': !isLineRadioActive('curve', index)
+            }"
+            (click)="setLineRadioValue('curve', index)"
+          >
+            <ion-icon slot="icon-only" name="layers-outline"></ion-icon>
+          </ion-button>
+        </ion-row>
+      </ion-col>
+      <ion-col size="2">
+        <ion-row class="container">
+          <ion-range
+            (ionChange)="sliderHandler($event, index)"
+            [value]="getSliderValue(index)"
+          ></ion-range>
+          <ion-button
+            class="ion-margin-horizontal"
+            (click)="openOptions(index)"
+          >
+            <ion-icon slot="icon-only" name="options-outline"></ion-icon>
+          </ion-button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  }
+</ion-grid>

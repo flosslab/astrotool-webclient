@@ -1,0 +1,26 @@
+@if(isAnyShown) {
+  <div class="ion-padding outer-buttons-container">
+    <div class="left-buttons-container">
+      <ion-button
+        (click)="onSave()"
+        [disabled]="!saveAndCancelEnabled"
+        [color]="getSaveAndCancelButtonColor"
+      >{{ 'settings.edits.save' | translate }}</ion-button>
+      <ion-button
+        (click)="onCancel()"
+        [disabled]="!saveAndCancelEnabled"
+        fill="clear"
+        [color]="getSaveAndCancelButtonColor"
+      >{{ 'settings.edits.cancel' | translate }}</ion-button>
+    </div>
+
+    @if(resetEnabled) {
+      <ion-button
+        (click)="onReset()"
+        fill="clear"
+        color="danger"
+      >{{ 'settings.edits.reset' | translate }}</ion-button>
+    }
+
+  </div>
+}

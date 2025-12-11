@@ -1,0 +1,7 @@
+{
+  "name": "vtk-project-viewer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,96 @@
+ion-content {
+  --background: #A6A6A5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h3 {
+  color: #000000;
+}
+
+h5 {
+  color: #000000;
+}
+
+p {
+  color: #000000;
+}
+
+a {
+  color: #064F98;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #002F78;
+}
+
+a:focus {
+  color: #002F78;
+}
+
+ion-card {
+  --background: #666666;
+}
+
+.logo-and-version-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+}
+
+.links-and-contacts-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: start;
+
+  div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    h5 {
+      width: 100%;
+      text-align: left;
+    }
+
+    ion-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+
+      p {
+        color: #FFFFFF;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.third-parties-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+
+  ion-card {
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-content: center;
+    justify-content: center;
+  }
+}

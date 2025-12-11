@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="logo-and-version-container">
+    <img src="assets/logo_visivo.png" width="auto" height="80" alt="Logo">
+    <h3>{{"aboutUs.title" | translate}}</h3>
+    <p>v {{version}}</p>
+  </div>
+  <div class="links-and-contacts-container">
+    <div>
+      <h5 class="ion-padding-horizontal">{{"aboutUs.links.title" | translate}}</h5>
+      <ion-card class="ion-padding">
+        <p><a target="_blank" href="https://www.google.com">
+          {{"aboutUs.links.documentation" | translate}}
+        </a></p>
+        <p><a target="_blank" href="https://www.google.com">
+          {{"aboutUs.links.helpDesk" | translate}}
+        </a></p>
+        <p><a target="_blank" href="https://www.google.com">
+          {{"aboutUs.links.privacyPolicy" | translate}}
+        </a></p>
+        <p><a target="_blank" href="https://www.google.com">
+          {{"aboutUs.links.termsAndConditions" | translate}}
+        </a></p>
+      </ion-card>
+    </div>
+    <div>
+      <h5 class="ion-padding-horizontal">{{"aboutUs.contacts" | translate}}</h5>
+      <ion-card class="ion-padding">
+        <p>fabio.vitello&#64;inaf.it</p>
+        <p>eva.sciacca&#64;inaf.it</p>
+        <p>ugo.becciani&#64;inaf.it</p>
+        <p>alessandro.costa&#64;inaf.it</p>
+        <p>molinari&#64;iaps.inaf.it</p>
+        <p>giuseppe.tudisco&#64;inaf.it</p>
+      </ion-card>
+    </div>
+  </div>
+  <div class="third-parties-container">
+    <h5>{{"aboutUs.thirdParties.title" | translate}}</h5>
+    <ion-card class="ion-padding">
+      <a target="_blank" href="https://www.google.com">
+        <img src="" width="auto" height="50" alt='{{"aboutUs.thirdParties.neanias" | translate}}'>
+      </a>
+      <a target="_blank" href="https://www.google.com">
+        <img src="" width="auto" height="50" alt='{{"aboutUs.thirdParties.cirasa" | translate}}'>
+      </a>
+      <a target="_blank" href="https://www.google.com">
+        <img src="" width="auto" height="50" alt='{{"aboutUs.thirdParties.ecogal" | translate}}'>
+      </a>
+    </ion-card>
+    <p>{{"aboutUs.thirdParties.visivo" | translate}}</p>
+  </div>
+</ion-content>

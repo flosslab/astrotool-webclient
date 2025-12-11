@@ -1,0 +1,35 @@
+<ion-modal [isOpen]="isOpen()" id="import-remote-file" [backdropDismiss]="false">
+  <ng-template>
+    <ion-header [translucent]="true" class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>{{'importRemoteFile.title' | translate}}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button slot="end" (click)="closeModalHandler()">
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content [fullscreen]="true" class="ion-padding">
+      <ion-input
+        class="ion-padding"
+        placeholder="{{'importRemoteFile.body.inputPlaceHolder' | translate}}"
+        type="url"
+        (ionInput)="setUrl($event.target.value)"
+      ></ion-input>
+
+      <ion-row class="ion-padding-vertical button-container">
+        <ion-col>
+          <ion-button
+            class="ion-padding-horizontal ion-float-right"
+            [disabled]="!isImportButtonValid"
+            (click)="importFileHandler()"
+          >
+            <p>{{'importRemoteFile.body.buttonLabel' | translate}}</p>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>

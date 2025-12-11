@@ -1,0 +1,35 @@
+ion-icon {
+  font-size: 32px;
+  color: #FFFFFF;
+}
+
+ion-input {
+  --highlight-color-valid: var(--ion-color-primary);
+  --highlight-color-focused: var(--ion-color-primary);
+}
+
+.main-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-container {
+  width: 100%;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  p {
+    white-space: nowrap;
+  }
+}
+
+.input-label {
+  width: 200px;
+}

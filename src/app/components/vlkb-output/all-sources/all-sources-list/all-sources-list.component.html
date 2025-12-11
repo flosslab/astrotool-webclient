@@ -1,0 +1,17 @@
+<ion-grid class="ion-no-padding">
+  @for (row of values; track row.value + " " + index; let index = $index, even = $even, odd = $odd) {
+    <ion-row
+      class="row"
+      [ngClass]="{
+        'even-row': !(isSelected(index) && selectedClass === 'blue-background') && even,
+        'odd-row': !(isSelected(index) && selectedClass === 'blue-background') && odd,
+        'disabled': row.disabled,
+        'blue-background': isSelected(index) && selectedClass === 'blue-background',
+        'green-text': isSelected(index) && selectedClass === 'green-text'
+      }"
+      (click)="!row.disabled ? setSelected(index) : undefined"
+    >
+      <span class="ion-padding">{{row.value}}</span>
+    </ion-row>
+  }
+</ion-grid>

@@ -1,0 +1,36 @@
+.main-window {
+
+}
+
+
+:host {
+  ion-menu {
+    --width: 75%;
+  }
+
+  .vtk-div-render {
+    display: grid;
+    position: relative;
+    height: 100%;
+
+    ::ng-deep {
+      canvas {
+        height: inherit !important;
+      }
+    }
+  }
+
+  //::ng-deep {
+  //  canvas {
+  //    width: 100% !important;
+  //    height: inherit;
+  //    display: inherit;
+  //    position: absolute;
+  //    top: 0;
+  //  }
+  //
+  //  img {
+  //    position: relative !important;
+  //  }
+  //}
+}

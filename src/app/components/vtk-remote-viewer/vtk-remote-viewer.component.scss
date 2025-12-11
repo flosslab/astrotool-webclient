@@ -1,0 +1,245 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 15% 80% 5%;
+  gap: 1px;
+  grid-template-areas:
+    "first first"
+    "left right"
+    "bottom-left bottom-right";
+  height: 100%;
+  padding: 1px;
+  overflow: hidden;
+
+  .first {
+    grid-area: first;
+  }
+
+  .left {
+    grid-area: left;
+  }
+
+  .right {
+    grid-area: right;
+  }
+
+  .bottom-left {
+    grid-area: bottom-left;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .bottom-right {
+    grid-area: bottom-right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vtk-div-render {
+    &.right {
+      cursor: crosshair !important;
+    }
+
+    position: relative;
+
+    .crosshair-horizontal, .crosshair-vertical {
+      display: none;
+      position: absolute;
+      background: red;
+    }
+
+    .crosshair-horizontal {
+      width: 100%;
+      height: 2px;
+    }
+
+    .crosshair-vertical {
+      height: 100%;
+      width: 2px;
+    }
+
+
+    //overflow: hidden;
+
+    ::ng-deep {
+      canvas {
+        width: 100% !important;
+        height: inherit;
+        display: inherit;
+        position: absolute;
+        top: 0;
+      }
+
+      img {
+        position: relative !important;
+      }
+    }
+  }
+
+  .contour2d-wrapper {
+    background-color: var(--grey-one);
+    padding: 1rem;
+    display: grid;
+    grid-template-areas:
+        "a a a "
+        "b b b"
+        "c c d";
+    justify-content: start;
+    /* align-items: center; */
+    grid-template-columns: 0.5fr 0.1fr 0.5fr;
+    grid-template-rows: auto min-content min-content;
+    gap: 0.5rem;
+    width: 20rem;
+
+    :first-child {
+      grid-area: a;
+      font-size: 1.125rem;
+    }
+
+    :nth-child(2) {
+      grid-area: b;
+    }
+
+    :nth-child(3) {
+      grid-area: c;
+    }
+
+    :nth-child(4) {
+      grid-area: d;
+    }
+  }
+
+  .first-left, .first-right {
+    padding: 0.5rem;
+  }
+
+  .first-left, .first-right, .bottom-left, .bottom-right {
+    background-color: var(--grey-two);
+    //border-radius: 0.5rem;
+  }
+
+  .first-left {
+    > div {
+      background-color: var(--grey-one);
+      padding: 1rem;
+
+      > div {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      > span {
+        width: 5rem;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+  }
+
+  .first-right {
+    display: grid;
+    //grid-template-areas: "a b";
+    gap: 0.5rem;
+    grid-template-columns: auto 1fr;
+  }
+
+  .statistics {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--grey-one);
+    padding: 1rem;
+    font-size: 0.8rem;
+
+    :first-child {
+      font-size: 1.125rem;
+    }
+  }
+
+  .data-cells {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+
+    border-radius: 0.5rem;
+
+  }
+
+}
+
+.headers-grid {
+  display: grid;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+  padding: 0 1rem 0 0;
+}
+
+.headers-grid:has(:last-child:nth-child(1)) {
+  max-height: fit-content;
+  overflow-y: hidden;
+  padding-right: 0;
+}
+
+.headers-grid-modal {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr 8fr;
+  height: 100%;
+  background-color: var(--grey-three);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.headers-grid-element {
+  display: grid;
+  grid-template-areas: " a b b " " c c c ";
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  background-color: var(--grey-one);
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  height: fit-content;
+  min-height: 6rem;
+
+  h5 {
+    grid-area: a;
+  }
+
+  span {
+    grid-area: b;
+    background-color: var(--grey-two);
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    justify-content: center;
+    display: flex;
+  }
+
+  p {
+    grid-area: c;
+  }
+}
+
+.custom-model {
+  --width: 600px;
+  --height: 80vh;
+  --border-radius: 12px;
+  --background: var(--grey-two);
+}
+
+.custom-input {
+  padding: 1rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background: var(--grey-two);
+  outline: none;
+  border: none;
+}

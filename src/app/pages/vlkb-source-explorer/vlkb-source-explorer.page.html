@@ -1,0 +1,74 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Options</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <ion-accordion-group
+      [multiple]="true"
+      [value]="['select-sources', 'filaments', 'all-sources']"
+    >
+
+      <ion-accordion value="select-sources">
+        <ion-item slot="header" class="accordion-header">
+          <ion-label>{{ 'vlkbOutputViewer.menu.selectSources' | translate }}</ion-label>
+          <ion-icon
+            class="ion-accordion-toggle-icon"
+            name="chevron-down"
+            slot="end">
+          </ion-icon>
+        </ion-item>
+        <div slot="content" class="accordion-content">
+          <app-select-sources [payload]="payload"></app-select-sources>
+        </div>
+      </ion-accordion>
+      @if (false) {
+        <ion-accordion value="filaments">
+          <ion-item slot="header" class="accordion-header">
+            <ion-label>{{ 'vlkbOutputViewer.menu.filaments' | translate }}</ion-label>
+            <ion-icon
+              class="ion-accordion-toggle-icon"
+              name="chevron-down"
+              slot="end">
+            </ion-icon>
+          </ion-item>
+          <div slot="content" class="accordion-content">
+            <app-filaments></app-filaments>
+          </div>
+        </ion-accordion>
+      }
+      <ion-accordion value="all-sources">
+        <ion-item slot="header" class="accordion-header">
+          <ion-label>{{ 'vlkbOutputViewer.menu.allSources' | translate }}</ion-label>
+          <ion-icon
+            class="ion-accordion-toggle-icon"
+            name="chevron-down"
+            slot="end">
+          </ion-icon>
+        </ion-item>
+        <div slot="content" class="accordion-content">
+          <app-all-sources [sources]="sources"></app-all-sources>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="saveAndGoHome()">&#10005;</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div #vtkDivRendererImage class="vtk-div-render"></div>
+  </ion-content>
+</div>
+

@@ -1,0 +1,32 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button id="file" size="small">Main</ion-button>
+    <ion-button id="view" size="small">View</ion-button>
+    <ion-popover trigger="file" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="set3dLayout('legend')"><span>Quit</span></ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+    <ion-popover trigger="view" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="set3dLayout('legend')"><span>Legend</span></ion-button>
+          <ion-button fill="clear" color="dark" expand="full" size="small" (click)="set3dLayout('grid')"><span>Grid</span></ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true">
+  @if (isLoaded) {
+    <app-vtk-remote-viewer [processData]="processData"></app-vtk-remote-viewer>
+
+  }
+
+</ion-content>

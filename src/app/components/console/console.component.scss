@@ -1,0 +1,41 @@
+:host {
+  --console-width: 33%;
+  --console-padding: 1rem;
+
+  position: absolute;
+  left: calc(-1 * (var(--console-width) + (2 * var(--console-padding))));
+  height: 100%;
+  width: var(--console-width);
+  padding: 1rem;
+  transition: left 0.3s ease;
+  z-index: 100;
+  background-color: var(--grey-two);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid black;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      height: fit-content;
+      padding: 1rem;
+    }
+  }
+
+  span {
+    display: flex;
+    padding: 0.75rem;
+    background-color: var(--grey-one);
+    width: 100%;
+    transition: display 0.3s ease-in;
+  }
+}
+
+:host(.expanded) {
+  left: 0;
+
+}

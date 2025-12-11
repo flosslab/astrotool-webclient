@@ -1,0 +1,254 @@
+{
+  "langs": {
+    "title": "Lingua",
+    "it": "Italiano",
+    "en": "Inglese"
+  },
+  "home": {
+    "menu": {
+      "file": {
+        "title": "File",
+        "resourceExplorer": "Esplora file",
+        "loadSession": "Carica sessione",
+        "exit": "Esci",
+        "loadSED": "Carica SED",
+        "open": "Apri",
+        "settings": "Impostazioni"
+      },
+      "vo": {
+        "title": "VO",
+        "coneSearch": "Ricerca conica",
+        "hips2fits": "HiPS2FITS"
+      },
+      "help": {
+        "title": "Aiuto",
+        "aboutUs": "Informazioni",
+        "log": "Log"
+      }
+    },
+    "body": {
+      "loadData": "Carica dati",
+      "select3d": "Seleziona 3d",
+      "surveySelector": {
+        "title": "Selettore del survey",
+        "hiGal": "HI-GAL",
+        "glimpseMipsigal": "GLIMPSE/MIPSIGAL",
+        "wise": "WISE",
+        "atlasgal": "ATLASGAL",
+        "bolocamGPS": "BOLOCAM GPS",
+        "cornish": "CORNISH"
+      },
+      "selection": {
+        "title": "Selezione",
+        "none": "Niente",
+        "point": "Punto",
+        "rectangular": "Rettangolare"
+      },
+      "coordinates": {
+        "title": "Coordinate (centro della selezione)",
+        "glon": "GLON",
+        "glat": "GLAT",
+        "radius": "Raggio",
+        "dl": "DL",
+        "db": "DB"
+      },
+      "query": "Cerca",
+      "request": "Richiedi",
+      "searchForm": {
+        "placeholder": "Cerca per coordinate o per nome",
+        "coordinates": "Coordinate",
+        "survey": {
+          "title": "Survey",
+          "placeholder": "Seleziona survey"
+        },
+        "projection": "Proiezione"
+      }
+    }
+  },
+  "aboutUs": {
+    "title": "VisioLab",
+    "links": {
+      "title": "Link:",
+      "documentation": "Documentazione",
+      "helpDesk": "Centro assistenza",
+      "privacyPolicy": "Politica sulla privacy",
+      "termsAndConditions": "Termini e condizioni"
+    },
+    "contacts": "Contatti:",
+    "thirdParties": {
+      "title": "Questo software è stato supportato da NEANIAS, CIRASA ed ECOGAL",
+      "neanias": "NEANIAS",
+      "cirasa": "CIRASA",
+      "ecogal": "ECOGAL",
+      "visivo": "Realizzato con VisIVO"
+    }
+  },
+  "settings": {
+    "menu": {
+      "title": "Impostazioni",
+      "general": "Generali",
+      "remote": "Connettività",
+      "extra": "Extra"
+    },
+    "edits": {
+      "save": "Salva",
+      "cancel": "Annulla",
+      "reset": "Resetta ai valori iniziali"
+    },
+    "authentication": {
+      "status": "Stato:",
+      "authenticated": "Autenticato",
+      "notAuthenticated": "Non autenticato",
+      "signIn": "Accedi",
+      "signUp": "Registrati",
+      "signOut": "Esci"
+    },
+    "tile": {
+      "title": "Casella",
+      "path": "Percorso",
+      "isOnline": "Online"
+    },
+    "vlkb": {
+      "title": "VLKB",
+      "vlkbUrl": "URL VLKB",
+      "tapUrl": "URL TAP",
+      "searchWhenLoadingLocalData": "Cerca quando i dati locali stanno caricando"
+    },
+    "caesar": {
+      "title": "CAESAR Source Finders",
+      "apiEndpoint": "Endpoint delle API"
+    },
+    "glyph": {
+      "title": "Glifo",
+      "max": "Massimo"
+    },
+    "threeD": {
+      "title": "Visualizzazione 3D",
+      "maxSize": "Dimensione massima (MB)"
+    }
+  },
+  "resourcesExplorer": {
+    "title": "Esplora file",
+    "body": {
+      "id": "Id",
+      "name": "Nome",
+      "size": "Dimensioni",
+      "mimeType": "MIME type",
+      "createdAt": "Data di creazione",
+      "wroteAt": "Data di scrittura",
+      "isocontours": "Isocontours",
+      "slices": "Slices",
+      "cube": "Cubo",
+      "state": {
+        "title": "Stato",
+        "completed": "Completato",
+        "uploading": "Caricamento in corso",
+        "error": "Errore"
+      },
+      "searchFiles": "Cerca file per nome...",
+      "importLocalFile": "Importa file locale",
+      "importRemoteFile": "Importa file remoto",
+      "nothingToShow": "Niente da mostrare"
+    }
+  },
+  "importRemoteFile": {
+    "title": "Importa file remoto",
+    "body": {
+      "inputPlaceHolder": "Scrivi l'URL del file...",
+      "buttonLabel": "Importa file remoto"
+    }
+  },
+  "importLocalFile": {
+    "title": "Importa file locale",
+    "body": {
+      "dragAndDrop": {
+        "placeHolder": "Trascina e rilascia un file dal tuo computer qui"
+      },
+      "browseLocalFolders": {
+        "buttonLabel": "Apri file"
+      },
+      "buttonLabel": "Importa file locale"
+    }
+  },
+  "vlkbOutputViewer": {
+    "title": "Visualizzatore output VLKB",
+    "menu": {
+      "selectSources": "Sorgenti selezionati",
+      "filaments": "Filamenti",
+      "allSources": "Tutti i sorgenti"
+    }
+  },
+  "hips2fits": {
+    "title": "HiPS2FITS",
+    "menu": {
+      "hipsSurvey": "Survey HiPS",
+      "widthPx": "Lunghezza (px)",
+      "heightPx": "Altezza (px)",
+      "ra": "RA",
+      "dec": "Dec",
+      "projection": "Proiezione",
+      "fovDegrees": "FoV (gradi)",
+      "coordsSystem": {
+        "title": "Sistema di coordinate",
+        "icrs": "icrs",
+        "galactic": "galattiche"
+      },
+      "rotationAngleDegrees": "Angolo di rotazione (gradi)",
+      "format": {
+        "title": "Formato",
+        "fits": "fits",
+        "jpg": "jpg",
+        "png": "png"
+      },
+      "minCutPercentile": "Taglio minimo (percentile)",
+      "maxCutPercentile": "Taglio massimo (percentile)",
+      "stretch": {
+        "title": "Stretch",
+        "linear": "linear",
+        "power": "power",
+        "sqrt": "sqrt",
+        "log": "log",
+        "asinh": "asinh"
+      },
+      "download": "Download"
+    }
+  },
+  "select3D": {
+    "title": "Aggiungi sorgenti compatte alla visualizzazione",
+    "menu": {
+      "vlkbUrl": "URL VLKB:",
+      "connect": "Connetti",
+      "coordinates": "Coordinate",
+      "longitude": "Longitudine",
+      "latitude": "Latitudine",
+      "min": "Min:",
+      "max": "Max:",
+      "saveToDisk": "Salva dataset su disco",
+      "outputPrefix": "Prefisso del nome dell'output:",
+      "query": "Cerca"
+    }
+  },
+  "coneSearch": {
+    "title": "Ricerca conica",
+    "menu": {
+      "parameters": "Parametri del cono",
+      "coneURL": "URL del cono",
+      "ra": "RA (gradi)",
+      "dec": "Dec (gradi)",
+      "radius": "Radius (gradi)",
+      "verbosity": {
+        "title": "Verbosità",
+        "low": "1 - Bassa",
+        "default": "2 - Default",
+        "high": "3 - Alta"
+      },
+      "search": "Cerca",
+      "sodaCutout": "SODA cutout"
+    },
+    "body": {
+      "table": {
+        "title": "Tabella"
+      }
+    }
+  }
+}

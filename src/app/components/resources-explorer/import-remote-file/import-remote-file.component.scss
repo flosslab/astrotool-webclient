@@ -1,0 +1,42 @@
+ion-modal#import-remote-file {
+  --width: 50%;
+  --height: 25vh;
+  --border-radius: 1.5rem;
+  --background: var(--grey-three);
+}
+
+ion-button {
+  --background: #266FB8;
+}
+
+ion-toolbar {
+  --background: var(--grey-three);
+  // border-bottom: solid #FFFFFF 1px;
+}
+
+ion-content {
+  --background: var(--grey-three);
+}
+
+ion-input {
+  --padding-bottom: 1rem;
+  --padding-top: 1rem;
+  --padding-left: 1rem;
+  --padding-right: 1rem;
+  height: 3rem;
+  --background: var(--dark-one);
+  --color: #FFFFFF;
+  --placeholder-color: var(--grey-three);
+  --border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  --highlight-color: #FFFFFF;
+  --highlight-height: 0;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

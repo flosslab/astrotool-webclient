@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'resourcesExplorer.title' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button slot="end" (click)="closeModalHandler()">
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-vertical">
+
+  <!-- Upper container -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar
+          (ionInput)="filterResources($event.target.value)"
+          search-icon="search-circle"
+          clear-icon="close-circle"
+          placeholder="{{ 'resourcesExplorer.body.searchFiles' | translate }}"
+        ></ion-searchbar>
+      </ion-col>
+      <ion-col>
+        <ion-row class="ion-float-end gap-1">
+          <ion-button [disabled]="true" (click)="openImportLocalFileHandler()" class=" button-blue">
+            <div>
+              <span>{{ 'resourcesExplorer.body.importLocalFile' | translate }}</span>
+              <ion-icon name="desktop-outline"></ion-icon>
+            </div>
+          </ion-button>
+          <ion-button [disabled]="true" (click)="openImportRemoteFileHandler()" class="button-blue">
+            <div>
+              <span>{{ 'resourcesExplorer.body.importRemoteFile' | translate }}</span>
+              <ion-icon name="globe-outline"></ion-icon>
+            </div>
+          </ion-button>
+        </ion-row>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-no-padding">
+
+    <!-- Table headers -->
+
+    <ion-row class="table-content table-header">
+      @for (column of getTableColumns; track column) {
+        <ion-col>
+          <ion-button (click)="orderResources(column.headerId)">
+            <div>
+              <p>{{ 'resourcesExplorer.body.' + column.headerTranslationKey | translate }}</p>
+
+              @if (isCurrentlyOrderedBy(column.headerId)) {
+                <ion-icon [name]="isCurrentlyAscending ? 'arrow-up' : 'arrow-down'"></ion-icon>
+              }
+            </div>
+          </ion-button>
+        </ion-col>
+      }
+    </ion-row>
+
+    <!-- Table content -->
+
+    @if (shownResourcesLength < 1) {
+      <ion-row class="table-content even-row">
+        <ion-col>
+          <p class="ion-text-center">{{ 'resourcesExplorer.body.nothingToShow' | translate }}</p>
+        </ion-col>
+      </ion-row>
+    } @else {
+      @for (resource of getShownResources; track resource; let even = $even, odd = $odd) {
+        <ion-row class="table-content ion-activatable ripple-parent" [ngClass]="{'even-row': even, 'odd-row': odd}" (click)="openFits(resource)">
+          <ion-ripple-effect></ion-ripple-effect>
+          @for (column of getTableColumns; track column) {
+            <ion-col>
+              <div [class]="'ion-padding-horizontal ' + column.getBodyContainerClasses(resource)">
+                <p>
+                  {{ column.getBodyContent(resource) }}
+                </p>
+              </div>
+            </ion-col>
+          }
+        </ion-row>
+      }
+    }
+  </ion-grid>
+</ion-content>
+
+
+<app-import-remote-file
+  [isOpen]="importRemoteFileOpen"
+  [onClose]="closeImportRemoteFileHandler.bind(this)"
+></app-import-remote-file>
+
+<app-import-local-file
+  [isOpen]="importLocalFileOpen"
+  [onClose]="closeImportLocalFileHandler.bind(this)"
+></app-import-local-file>
